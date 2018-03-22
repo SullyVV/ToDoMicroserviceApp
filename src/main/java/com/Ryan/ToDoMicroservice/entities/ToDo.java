@@ -40,11 +40,7 @@ public class ToDo {
     @NotNull @NotBlank @NotEmpty
     private String fkUser;
 
-
-    public ToDo(Integer id, String description, String priority, String fkUser) {
-        this.id = id;
-        this.description = description;
-        this.priority = priority;
-        this.fkUser = fkUser;
+    public String getPriority() {
+        return priority;
     }
 }

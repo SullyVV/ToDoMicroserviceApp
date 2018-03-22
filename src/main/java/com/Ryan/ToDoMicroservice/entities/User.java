@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "users")
+@AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
@@ -30,11 +31,5 @@ public class User {
     @Getter @Setter
     @NotNull @NotEmpty @NotBlank
     private String passwd;
-
-    public User(String email, String name, String passwd) {
-        this.email = email;
-        this.name = name;
-        this.passwd = passwd;
-    }
 
 }
