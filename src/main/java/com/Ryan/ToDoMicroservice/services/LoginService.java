@@ -3,6 +3,7 @@ package com.Ryan.ToDoMicroservice.services;
 import com.Ryan.ToDoMicroservice.entities.User;
 import com.Ryan.ToDoMicroservice.utilities.UserNotInDatabaseException;
 import com.Ryan.ToDoMicroservice.utilities.UserNotLoggedException;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;

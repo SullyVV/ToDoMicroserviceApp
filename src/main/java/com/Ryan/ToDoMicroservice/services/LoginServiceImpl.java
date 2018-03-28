@@ -12,10 +12,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Optional;
 import com.Ryan.ToDoMicroservice.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.Date;
 
+@Service
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
