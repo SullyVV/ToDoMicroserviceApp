@@ -21,6 +21,7 @@ public class ToDoMicroserviceApplication implements CommandLineRunner {
 
 	@Autowired
 	EncryptionUtils encryptionUtils;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ToDoMicroserviceApplication.class, args);
 	}

@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ToDoDao extends JpaRepository<ToDo, Integer> {
     // name stratege
-    List<User> findToDoByFkUser(String email);
+    List<ToDo> findToDoByFkUser(String email);
 
     // query annotation
     @Query(value="select * from todos WHERE description=:description", nativeQuery = true)

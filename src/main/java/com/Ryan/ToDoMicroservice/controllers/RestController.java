@@ -61,10 +61,10 @@ public class RestController {
         return "ToDo Description: " + todo.getDescription() + ". Todo Priority is: " + todo.getPriority();
     }
 
-    @RequestMapping("/exampleUrl")
-     public ResponseEntity<JsonResponse> returnMyStandardResponse() {
-
-        return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt).body(new JsonResponse());
-    }
+//    @RequestMapping("/exampleUrl")
+//     public ResponseEntity<JsonResponse> returnMyStandardResponse() {
+//
+//        return ResponseEntity.status(HttpStatus.OK).header("jwt", jwt).body(new JsonResponse());
+//    }
 
 }
