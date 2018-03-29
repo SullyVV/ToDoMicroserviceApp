@@ -33,6 +33,10 @@ public class RestController {
     @Autowired
     TodoService todoService;
 
+    @RequestMapping(value="/hello")
+    public ResponseEntity<JsonResponseBody> hello() {
+        return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), "success"));
+    }
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<JsonResponseBody> login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String pwd) {
         // 1. success: return a string with the login msg + jwt in the header of the http response
@@ -55,7 +59,6 @@ public class RestController {
     public ResponseEntity<JsonResponseBody> showToDos(HttpServletRequest request) {
         // 1. success:  return a list of ToDos in the "response" attribute of the JsonResponseBody
         // 2. failure: return an error msg
-
         try {
             Map<String, Object> userData = loginService.verifyJwtAndGetData(request);
             return ResponseEntity.status(HttpStatus.OK).body(new JsonResponseBody(HttpStatus.OK.value(), todoService.getToDos((String)userData.get("email"))));
@@ -64,7 +67,8 @@ public class RestController {
         } catch (UserNotLoggedException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new JsonResponseBody(HttpStatus.FORBIDDEN.value(), "Forbidden"));
         } catch (ExpiredJwtException e) {
-            return ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(new JsonResponseBody(HttpStatus.GATEWAY_TIMEOUT.value(), "Gateway Timeout"));
+            // somehow always expired, ignore this error and proceed as its now expired
+            return ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT).body(new JsonResponseBody(HttpStatus.GATEWAY_TIMEOUT.value(), "Gateway Timeout: " + e.getMessage()));
         }
     }
 

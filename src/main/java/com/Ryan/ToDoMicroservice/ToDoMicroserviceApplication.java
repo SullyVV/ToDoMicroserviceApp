@@ -37,8 +37,11 @@ public class ToDoMicroserviceApplication implements CommandLineRunner {
 		toDoDao.save(new ToDo(1, "learn microService", "high", "alex@example.com"));
 		toDoDao.save(new ToDo(null,"learn microService", "high", "franz@example.com"));
 		toDoDao.save(new ToDo(3, "learn microService", "med", "alex@example.com"));
-		System.out.println("completes");
 
+		String encryptedPasswd3 = encryptionUtils.encrypt("testUser");
+		userDao.save(new User("testUser@example.com", "testUser", encryptedPasswd3));
+		toDoDao.save(new ToDo(null, "test first microservice", "high", "testUser@example.com"));
+		toDoDao.save(new ToDo(null, "go on with the second microservice", "high", "testUser@example.com"));
 	}
 
 }

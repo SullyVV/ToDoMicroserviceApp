@@ -51,6 +51,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Map<String, Object> verifyJwtAndGetData(HttpServletRequest request) throws UnsupportedEncodingException, UserNotLoggedException {
+        System.out.println("asdasd");
         String jwt = jwtUtils.getJwtFromHttpRequest(request);
         if (jwt == null) {
             throw new UserNotLoggedException("User not logged in first");
